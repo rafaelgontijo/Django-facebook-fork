@@ -16,11 +16,11 @@ class FacebookRegistrationFormUniqueEmail(forms.Form):
     """
     Some basic validation, adapted from django registration
     """
-    username = forms.RegexField(regex=r'^\w+$',
-                                max_length=30,
-                                widget=forms.TextInput(attrs=attrs_dict),
-                                label=_("Username"),
-                                error_messages={'invalid': _("This value must contain only letters, numbers and underscores.")})
+    #username = forms.RegexField(regex=r'^\w+$',
+    #                            max_length=30,
+    #                            widget=forms.TextInput(attrs=attrs_dict),
+    #                            label=_("Username"),
+    #                            error_messages={'invalid': _("This value must contain only letters, numbers and underscores.")})
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
                              label=_("Email address"))
@@ -31,19 +31,22 @@ class FacebookRegistrationFormUniqueEmail(forms.Form):
         widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
         label=_("Password (again)"))
 
-    def clean_username(self):
-        """
-        Validate that the username is alphanumeric and is not already
-        in use.
+    first_name = forms.CharField(required=False)
+    last_name = forms.CharField(required=False)
 
-        """
-        try:
-            get_user_model().objects.get(
-                username__iexact=self.cleaned_data['username'])
-        except get_user_model().DoesNotExist:
-            return self.cleaned_data['username']
-        raise forms.ValidationError(
-            _("A user with that username already exists."))
+    #def clean_username(self):
+    #    """
+    #    Validate that the username is alphanumeric and is not already
+    #    in use.
+
+    #    """
+    #    try:
+    #        get_user_model().objects.get(
+    #            username__iexact=self.cleaned_data['username'])
+    #    except get_user_model().DoesNotExist:
+    #        return self.cleaned_data['username']
+    #    raise forms.ValidationError(
+    #        _("A user with that username already exists."))
 
     def clean(self):
         """

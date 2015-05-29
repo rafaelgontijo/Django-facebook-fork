@@ -114,7 +114,7 @@ class FacebookCanvasMiddleWare(object):
 
     def check_django_facebook_user(self, request, facebook_id, access_token):
         try:
-            current_user = request.user.get_profile()
+            current_user = request.user.facebookprofile
         except:
             current_facebook_id = None
         else:

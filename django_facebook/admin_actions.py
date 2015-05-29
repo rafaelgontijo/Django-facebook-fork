@@ -17,7 +17,7 @@ def retry_facebook_invite(modeladmin, request, queryset):
         user_invites[invite.user].append(invite)
 
     for user, invites in user_invites.items():
-        profile = user.get_profile()
+        profile = user.facebookprofile
         graph = profile.get_offline_graph()
         if not graph:
             error_message = 'couldnt connect to the graph, user access token is %s' % profile.access_token

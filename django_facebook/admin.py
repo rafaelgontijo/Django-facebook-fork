@@ -46,7 +46,7 @@ def facebook_profile(open_graph_share):
     with user id and image and link to facebook :)
     '''
     user = open_graph_share.user
-    profile = user.get_profile()
+    profile = user.facebookprofile
     facebook_id = profile.facebook_id
     facebook_url = 'http://www.facebook.com/%s/' % facebook_id
     link = '<p><a href="%s"><img src="http://graph.facebook.com/%s/picture/?type=large" width="100px" style="float:left"/>%s</a><br/></p>' % (

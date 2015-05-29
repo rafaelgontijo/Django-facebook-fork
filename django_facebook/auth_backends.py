@@ -125,7 +125,7 @@ class FacebookBackend(backends.ModelBackend):
                         ).objects.get(email=facebook_email)
                     except get_user_model().DoesNotExist:
                         user = None
-                    profile = user.get_profile() if user else None
+                    profile = user.facebookprofile if user else None
 
             if profile:
                 # populate the profile cache while we're getting it anyway

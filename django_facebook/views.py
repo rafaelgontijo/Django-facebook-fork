@@ -33,12 +33,12 @@ def connect(request, graph):
     Don't bother reading this code, skip to _connect for the bit you're interested in :)
     '''
     backend = get_registration_backend()
-    context = RequestContext(request)
+    #context = RequestContext(request)
 
     # validation to ensure the context processor is enabled
-    if not context.get('FACEBOOK_APP_ID'):
-        message = 'Please specify a Facebook app id and ensure the context processor is enabled'
-        raise ValueError(message)
+    #if not context.get('FACEBOOK_APP_ID'):
+    #    message = 'Please specify a Facebook app id and ensure the context processor is enabled'
+    #    raise ValueError(message)
 
     try:
         response = _connect(request, graph)

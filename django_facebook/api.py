@@ -339,9 +339,9 @@ class FacebookUserConverter(object):
         user_data['date_of_birth'] = cls._parse_data_of_birth(
             user_data['date_of_birth'])
 
-        if username:
-            user_data['username'] = cls._create_unique_username(
-                user_data['username'])
+        #if username:
+        #    user_data['username'] = cls._create_unique_username(
+        #        user_data['username'])
 
         # make sure the first and last name are not too long
         if 'first_name' in user_data:

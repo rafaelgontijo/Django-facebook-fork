@@ -142,7 +142,7 @@ def update_user_attributes(user, profile, attributes_dict, save=False):
 
 def try_get_profile(user):
     try:
-        p = user.get_profile()
+        p = user.facebookprofile
     except:
         p = None
     return p
@@ -186,7 +186,7 @@ def clear_persistent_graph_cache(request):
     request.facebook = None
     request.session.delete('graph')
     if request.user.is_authenticated():
-        profile = request.user.get_profile()
+        profile = request.user.facebookprofile
         profile.clear_access_token()
 
 
