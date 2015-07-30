@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 def get_user_model_setting():
     from django.conf import settings
     default = 'auth.User'
-    user_model_setting = getattr(settings, 'AUTH_USER_MODEL', default)
+    user_model_setting = getattr(settings, 'AUTH_USER_FACEBOOK', default)
     return user_model_setting
 
 
