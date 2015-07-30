@@ -11,6 +11,7 @@ from django.http import QueryDict, HttpResponse, HttpResponseRedirect
 from django.conf import settings
 import django.contrib.auth
 from django.db import models, transaction
+from django.db.models.loading import get_model
 import logging
 import re
 from django_facebook import settings as facebook_settings
@@ -46,10 +47,12 @@ def get_user_model():
     '''
     For Django < 1.5 backward compatibility
     '''
-    if hasattr(django.contrib.auth, 'get_user_model'):
-        return django.contrib.auth.get_user_model()
-    else:
-        return django.contrib.auth.models.User
+    model = settings.AUTH_USER_FACEBOOK
+    return get_model (model.split('.'))
+    #if hasattr(django.contrib.auth, 'get_user_model'):
+    #    return django.contrib.auth.get_user_model()
+    #else:
+    #    return django.contrib.auth.models.User
 
 
 def get_model_for_attribute(attribute):
