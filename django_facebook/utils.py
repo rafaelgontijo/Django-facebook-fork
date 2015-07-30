@@ -49,7 +49,7 @@ def get_user_model():
     '''
     model = getattr(settings, 'AUTH_USER_FACEBOOK', None)
     if model:
-        return get_model(model.split('.'))
+        return get_model(model)
     else:
         return django.contrib.auth.models.User
     #if hasattr(django.contrib.auth, 'get_user_model'):
