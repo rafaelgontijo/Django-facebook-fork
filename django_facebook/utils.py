@@ -47,8 +47,11 @@ def get_user_model():
     '''
     For Django < 1.5 backward compatibility
     '''
-    model = settings.AUTH_USER_FACEBOOK
-    return get_model (model.split('.'))
+    model = getattr(settings, 'AUTH_USER_FACEBOOK', None)
+    if model:
+        return get_model(model.split('.'))
+    else:
+        return django.contrib.auth.models.User
     #if hasattr(django.contrib.auth, 'get_user_model'):
     #    return django.contrib.auth.get_user_model()
     #else:
